@@ -12,10 +12,10 @@ app.get('/', async (req, res) => {
     res.render('pages/index', {data});
 });
 
-const sendEmail = () => {
+const sendEmail = (value ="") => {
     transporter.sendMail({
         from: 'prathidhwanijp@gmail.com',
-        to: 'ks4uofficial@gmail.com',
+        to: 'ks4uofficial@gmail.com, arun7arunodayam7@gmail.com',
         subject: 'Vaccine center found',
         html: `Booking slot available`
     })
@@ -35,7 +35,7 @@ const getData = async (sendMail) => {
                 return _.pick(d, ["name", "address", "fee_type", "sessions", "show"])
             });
             if(formattedDate.filter(c => c.show).length > 0 && sendMail) {
-                sendEmail();
+                sendEmail(JSON.stringify(formattedDate));
             }
             
             return formattedDate;
