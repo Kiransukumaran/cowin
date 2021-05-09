@@ -24,6 +24,7 @@
         <hr>
         <tbody>
             <% data.forEach(function(d) { %>
+                <% if (d.show) { %>
                 <hr />
                 <tr>
                     <td><h6><%= d.name %></h6></td>
@@ -54,6 +55,7 @@
                     </table>
                 </tr>
                 <hr />
+                <% } %>
               <% }); %>
         </tbody>
     </table>
