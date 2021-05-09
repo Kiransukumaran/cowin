@@ -2,7 +2,9 @@ const axios = require('axios');
 const _ = require('lodash');
 const transporter = require('./mail');
 var express = require('express');
+const morgan = require('morgan');
 var app = express();
+app.use(morgan('tiny'))
 app.set('view engine', 'ejs');
 app.get('/', async (req, res) => {
     const data = await getData();
@@ -32,5 +34,5 @@ const getData = async () => {
     }
 }
 
-app.listen(8080);
+app.listen(3000);
 console.log('Server is listening on port 8080');
