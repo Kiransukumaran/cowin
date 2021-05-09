@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+  <%- include('../partials/header'); %>
+</header>
+
+<main>
+  <div class="jumbotron">
+    <h1>Availability</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Fee Type</th>
+                <th>Sessions</th>
+              </tr>
+        </thead>
+        <hr>
+        <tbody>
+            <% data.forEach(function(d) { %>
+                <hr />
+                <tr>
+                    <td><h6><%= d.name %></h6></td>
+                    <td><%= d.address %></td>
+                    <td><%= d.fee_type %></td>
+                    <br />
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Capacity</th>
+                                <th>Min Age</th>
+                                <th>Vaccine</th>
+                                <th>Slots</th>
+                              </tr>
+                        </thead>
+                        <tbody>
+                            <% d.sessions.forEach(function(s) { %>
+                                <tr>
+                                    <td><%= s.date %></td>
+                                    <td><%= s.available_capacity %></td>
+                                    <td><%= s.min_age_limit %></td>
+                                    <td><%= s.vaccine %></td>
+                                    <td><%= s.slots %></td>
+                                </tr>
+                                <% }); %>
+                        </tbody>
+                    </table>
+                </tr>
+                <hr />
+              <% }); %>
+        </tbody>
+    </table>
+  </div>
+</main>
+
+<footer>
+  <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>
